@@ -1,7 +1,7 @@
 <template>
 	<div id="password">
 
-		<h3><span>请设置您的资金密码</span>用于登陆及转账</h3>
+		<h3><span>请设置您的资金密码</span>用于转账</h3>
 		<div class="w_inp_con">
 			<input type="password" v-model="passwd" placeholder="请输入8～16位的密码">
 			<input class="w_margin_t" type="password" v-model="passwdTwo" placeholder="请确认密码">

@@ -3,7 +3,7 @@ const {SEVER_IP, SEVER_PORT} = require('../../constants/constants')
 
 const dba = require('../sqlite/sqlite');
 const dbInit = require('../sqlite/init');
-const http=require('http');
+const https=require('https');
 const send  = require('../base/sendTranaction');
 const pwd = require('../base/secret');
 const sendRecord = require('./sendRecord');
@@ -74,7 +74,7 @@ const sendTransaction = _sendTransactionIpc => ({
                   headers:headers
                 };
 
-                var req = http.request(options, function (res) {
+                var req = https.request(options, function (res) {
                   res.setEncoding('utf-8');
                   var responseString = '';
                   res.on('data', function (data) {
@@ -115,7 +115,7 @@ const sendTransaction = _sendTransactionIpc => ({
                       headers:headers
                     };
 
-                    var req = http.request(options, function (res) {
+                    var req = https.request(options, function (res) {
                       res.setEncoding('utf-8');
                       var responseString = '';
                       res.on('data', function (data) {
@@ -142,7 +142,7 @@ const sendTransaction = _sendTransactionIpc => ({
                           method:'POST',
                           headers:headers
                         };
-                        var req = http.request(options, function (res) {
+                        var req = https.request(options, function (res) {
                           res.setEncoding('utf-8');
                           var responseString = '';
                           res.on('data', function (data) {

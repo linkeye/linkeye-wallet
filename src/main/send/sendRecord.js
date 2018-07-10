@@ -2,7 +2,7 @@ var UUID = require('uuid');
 const dbInit = require('../sqlite/init');
 
 function sendRcordData(fromAddress, accountId, toAddress, sendToBalance, sendFee, sendContent, status, blockNumber, transHash) {
-  if(!fromAddress || !accountId || !toAddress || !sendToBalance || !sendFee || !sendContent || !status == null) {
+  if(!fromAddress || !accountId || !toAddress || !sendToBalance || !sendFee || !status == null) {
     console.log("one of these params is null");
   } else {
     var uuidId = UUID.v1();

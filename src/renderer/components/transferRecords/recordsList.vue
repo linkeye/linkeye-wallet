@@ -15,6 +15,7 @@
             <span>地址：</span>
             <div class="right_div">
               <p>LET{{ item.account_address}}</p>
+              <!--<i @click="onCopy(item.account_address)"></i>-->
             </div>
           </li>
           <li>
@@ -61,6 +62,7 @@
 </template>
 
 <script>
+  const {clipboard} = require('electron')
   import moment from 'moment'
   import { Toast } from 'mint-ui'
   export default {
@@ -79,11 +81,17 @@
       }
     },
 
-    mounted: function () {
+    mounted:function () {
       this.startRequest();
     },
 
     methods: {
+      //copy success
+      onCopy:function (content) {
+        clipboard.writeText(content,'selection');
+        Toast('复制成功')
+      },
+
       getStatusName:function (status) {
         if(status == 0){
           return '成功';
@@ -103,7 +111,11 @@
 
       onRequestBalance:function (item) {
         let accountAddress = item.account_address;
-        this.$ipcRenderer.send('balance',accountAddress);
+        if(window.navigator.onLine){
+          this.$ipcRenderer.send('balance',accountAddress);
+        }else{
+          Toast('您的网络开小差了，请检查您的设备是否连网')
+        }
         this.onresponseBalance();
       },
 
@@ -117,7 +129,7 @@
               Toast('您输入的信息有误，请重新输入');
             }
             if(data.errorCode == 1001) {
-              Toast('您的网络开小差了，请检查您的网络');
+              Toast('您的网络开小差了，请检查您的设备是否连网');
             }
           }
         })
@@ -173,8 +185,10 @@
       onResponseRecords:function () {
         let _this = this;
         this.$ipcRenderer.on('record-back', data => {
+          _this.$ipcRenderer.detach('record-back')
           if(data && data.success){
             _this.recordsList = JSON.parse(data.recordInfo)
+            // _this.onResponseRecords();
           } else {
             if(data.errorCode == 909) {
               Toast("数据初始化失败，请重试")
@@ -285,7 +299,7 @@
               background: url(./img/address_icon.png) no-repeat center;
               background-size: 100%;
               display: inline-block;
-              margin-left: 20px;
+              margin-left: 10px;
               position: relative;
               top:2px;
             }

@@ -3,10 +3,10 @@
 		<div class="logo"></div>
 		<p class="w_command_t">口令登陆 :</p>
 		<div class="w_passworld_con">
-			<input type="password" v-model="password" name="">
+			<input type="password" @keyup.enter='ClickEnter' v-model="password" name="">
 			<span @click='ClickEnter'></span>
 		</div>
-		<p class="w_introduce">*第一次登陆口令为linkeye,登陆之后请更改口令</p>
+		<p class="w_introduce">*第一次登陆口令为linkeye,登陆之后请您更改口令*</p>
 	</div>
 </template>
 <script>
@@ -146,15 +146,12 @@
 
 	            height: 20px;
 	            padding-bottom: 14px;
-
 	            text-align: center;
-
 	            color: #fff;
 	            border: none;
 	            border-bottom: 1px solid #fff;
 	            outline: none;
 	            background: none;
-
 	            @include flexList;
 	        }
 	        span

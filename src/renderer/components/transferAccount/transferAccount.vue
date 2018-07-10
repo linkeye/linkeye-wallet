@@ -15,6 +15,7 @@
             <span>地址：</span>
             <div class="right_div">
               <p>LET{{ item.account_address}}</p>
+              <!--<i @click="onCopy(item.account_address)"></i>-->
             </div>
           </li>
           <li>
@@ -29,7 +30,7 @@
         <ul>
           <li>
             <span>对方地址</span>
-            <input v-model="toAddress" type="text">
+            <input v-model="toAddress" type="text" @contextmenu.prevent="show1">
           </li>
           <li>
             <span>转账金额</span>
@@ -47,6 +48,9 @@
           </li>
         </ul>
       </div>
+      <div class="copy_dialog" v-show="copyBorder" :style="{left:mouseX+'px',top:mouseY+'px'}">
+        <p @click="pasteText">粘贴</p >
+      </div>
       <div class="common_btn check_btn" @click="popClick">
         <span>确认</span>
       </div>
@@ -55,6 +59,7 @@
 </template>
 
 <script>
+  const {clipboard} = require('electron')
   import moment from 'moment'
   import { Toast } from 'mint-ui'
   import pwdDialog from './passwordDialog.vue'
@@ -74,13 +79,34 @@
           accountShowNo:0,
           isShowNameList:false,
           accountBalance:'',
-          letAddress:''
+          letAddress:'',
+          mouseX:'',
+          mouseY:'',
+          copyBorder:false,
         }
       },
       mounted: function () {
         this.startRequest();
       },
       methods: {
+        //copy success
+        onCopy:function (content) {
+          clipboard.writeText(content,'selection');
+          Toast('复制成功')
+        },
+
+        pasteText:function () {
+          this.toAddress = clipboard.readText('selection');
+          this.copyBorder = false;
+        },
+
+        show1:function (e) {
+          console.log(e)
+          this.mouseX = e.clientX;
+          this.mouseY = e.clientY;
+          this.copyBorder = true;
+        },
+
         popClick:function () {
           let fromAddress = this.fromAddress;
           let toAddress = this.toAddress;
@@ -98,6 +124,10 @@
           }
           if (!sendToBalance) {
             Toast('转账金额为空，请先输入转账金额');
+            return false;
+          }
+          if(!sendFee) {
+            Toast('手续费不能为空，请先输入手续费');
             return false;
           }
           if(parseFloat(sendFee) < 0.01 || parseFloat(sendFee) > 1) {
@@ -130,7 +160,11 @@
             sendFee:this.sendFee,
             sendContent:this.sendContent,
           }
-          this.$ipcRenderer.send('send', sendInfo);
+          if(window.navigator.onLine){
+            this.$ipcRenderer.send('send', sendInfo);
+          }else{
+            Toast('您的网络开小差了，请检查您的设备是否连网')
+          }
           this.responseTransfer()
         },
 
@@ -165,7 +199,7 @@
                 }
 
                 if(data.errorCode == 2005 || data.errorCode == 2006 || data.errorCode == 2007) {
-                  Toast("您的网络开小差了，请检查一下您的网络");
+                  Toast("您的网络开小差了，请检查您的设备是否连网");
                 }
 
                 if(data.errorCode == 2008) {
@@ -188,7 +222,11 @@
 
         onRequestBalance:function (item) {
           let accountAddress = item.account_address;
-          this.$ipcRenderer.send('balance',accountAddress);
+          if(window.navigator.onLine){
+            this.$ipcRenderer.send('balance',accountAddress);
+          }else{
+            Toast('您的网络开小差了，请检查您的设备是否连网')
+          }
           this.onresponseBalance();
         },
 
@@ -356,7 +394,7 @@
                 background: url(./img/address_icon.png) no-repeat center;
                 background-size: 100%;
                 display: inline-block;
-                margin-left: 20px;
+                margin-left: 10px;
                 position: relative;
                 top:2px;
               }
@@ -434,6 +472,19 @@
         width:300px;
         margin:44px auto 0;
         cursor: pointer;
+      }
+      .copy_dialog{
+        position: absolute;
+        width: 80px;
+        height:26px;
+        border: 1px solid;
+        font-size: 16px;
+        background: #ffffff;
+        p{
+          text-align: center;
+          line-height: 26px;
+          cursor: default;
+        }
       }
     }
 

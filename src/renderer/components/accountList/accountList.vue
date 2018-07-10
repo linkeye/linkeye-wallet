@@ -12,7 +12,8 @@
 							<div>
 								<span>LET{{acount.account_address}}</span>
 								<i @click='exportDialog(acount.account_address)'></i>
-							</div>
+                <i class="copy_i" @click="onCopy('LET' + acount.account_address)"></i>
+              </div>
 						</div>
 					</div>
 					<div class="list_r">
@@ -28,10 +29,11 @@
 					<i @click="isImportShow = true">导入私钥</i>
 				</div>
 			</div>
-      <div class="w_linkeye_introduce clearfix">
-				<span>Linkeye项目介绍</span>
-				<a href="javascript:;">官方链接</a>
-			</div>
+      <!--<div class="w_linkeye_introduce clearfix">-->
+				<!--<span>Linkeye项目介绍</span>-->
+				<!--<a href="javascript:;">官方链接</a>-->
+			<!--</div>-->
+      <!--<img src="./img/linkeyeWeb.png"/>-->
 		</div>
 		<exportPrivateKey :isPrivateKeyShow='isPrivateKeyShow' :accountAddress="exportAddress" @closePrivateKeyShow='closePrivateKeyShow'></exportPrivateKey>
 		<addAcount :addCountPopShow='addCountPopShow' @closeAddAcountPop='closeAddAcountPop'></addAcount>
@@ -46,7 +48,7 @@
   import changePassword from '@/components/accountList/changePassword';
   import { Toast } from 'mint-ui'
   import accountList from "../../../main/record/accountList";
-
+  const {clipboard} = require('electron')
 	export default {
 		data(){
 			return{
@@ -64,6 +66,12 @@
       this.startRequest();
     },
 		methods:{
+      //copy success
+      onCopy:function (content) {
+        clipboard.writeText(content,'selection');
+        Toast('复制成功')
+      },
+
       closePasswordShow:function(){
         this.isPasswordShow = false;
       },
@@ -96,7 +104,11 @@
       },
       getAccountList:function() {
 			  for(let i = 0; i < this.accountList.length; i++){
-			    this.startRequestBalance(this.accountList[i])
+          if(window.navigator.onLine){
+            this.startRequestBalance(this.accountList[i])
+          }else{
+            Toast('请检查您的网络设置')
+          }
         }
         this.onRequestBackBalance()
       },
@@ -153,7 +165,6 @@
               Toast('您的网络开小差了，请检查您的网络');
             }
           }
-
         })
       },
       totalBalanceFn:function(){
@@ -162,6 +173,7 @@
 			    this.totalBalance += Number(this.accountBalance[item]);
         }
       },
+
       startRequestBalance:function(item) {
         this.$ipcRenderer.send('balance', item.account_address);
       },
@@ -262,6 +274,10 @@
 	                    background-size: 600px;
                       cursor: pointer;
 	                }
+                  div>i.copy_i{
+                    margin-left: 5px;
+                    background: url(./img/address_icon.png) no-repeat center;
+                  }
 	            }
 	        }
         .list_r{

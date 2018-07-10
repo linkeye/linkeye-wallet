@@ -47,8 +47,10 @@
 		methods:{
 			closePop(){
 				this.$emit('closeSetPopFn',false)
+        this.oldPassword = ""
+        this.newPassword = ""
+        this.confirmPassword = ""
 			},
-
 
       updatePassword:function(){
         let oldPassword = this.oldPassword;
@@ -85,7 +87,7 @@
               Toast('后台报错，请重试或者联系Linkeye团队...');
             }else {
               Toast('修改密码成功，请记住您的密码');
-              _this.$emit('closeSetPopFn',false)
+              _this.closePop()
             }
           } else {
             if(data.errorCode == 920) {
@@ -193,7 +195,7 @@
 			margin-top: 66px;
 			height: 48px;
 			line-height: 48px;
-			background: #999999;
+			background: #788CF5;
 		}
 		.currency_set {
 			&>div {

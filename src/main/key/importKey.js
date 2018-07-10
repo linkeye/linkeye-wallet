@@ -81,14 +81,8 @@ const importPrivateKey = _importPrivateKeyIpc => ({
           } else {
             var sql = "SELECT account_address FROM account where account_address = " + "\'" + keyObject.address + "\'";
             db.all(sql, function w(err, row) {
-              console.log("Query account address success and account address is " + row.account_address);
-              if(row.account_address == keyObject.address){
-                requestBack({
-                  success:false,
-                  error:"account have already existed",
-                  errorCode:603,
-                })
-              } else {
+              console.log("query database success and the length of row is " +  row.length);
+              if(row.length == 0) {
                 var insert = db.prepare("INSERT INTO account(account_id, account_name, account_passwd, account_address, account_keystore, account_ciphertext_private_key) VALUES (?, ?, ?, ?, ?, ?)");
                 insert.run(accountId, generateAccountNaem(true, 7, 7), importKey.password, keyObject.address, JSON.stringify(keyObject), keyObject.crypto.ciphertext);
                 insert.finalize();
@@ -96,8 +90,18 @@ const importPrivateKey = _importPrivateKeyIpc => ({
                 keythereum.exportToFile(keyObject, KEYSTOR_PATH);
                 requestBack({
                   success: true,
-                  generateMsg:"success",
+                  generateMsg: "success",
                 })
+              } else {
+                for(var i = 0; i < row.length; i++) {
+                  if(row[i].account_address == keyObject.address){
+                    requestBack({
+                      success:false,
+                      error:"account have already existed",
+                      errorCode:603,
+                    })
+                  }
+                }
               }
             });
           }
@@ -113,5 +117,4 @@ const importPrivateKey = _importPrivateKeyIpc => ({
   }
 });
 
-//geth --datadir ./data --networkid 10 console --rpc
 export default importPrivateKey

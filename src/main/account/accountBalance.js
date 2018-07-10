@@ -1,7 +1,7 @@
 import getAccountBalanceIpc from '../ipc/ipcBalanceMsg'
 const {SEVER_IP, SEVER_PORT} = require('../../constants/constants')
 
-const http = require('http');
+const https = require('https');
 var Web3 = require("web3");
 
 if (typeof web3 !== 'undefined')
@@ -40,6 +40,7 @@ const getAccountBalance = _getAccountBalanceIpc => ({
         'Content-Type': 'application/json',
         'Content-Length': bodyString.length
       };
+      //https://wallet.linkeye.com
       var options = {
         host: SEVER_IP,
         port: SEVER_PORT,
@@ -47,7 +48,7 @@ const getAccountBalance = _getAccountBalanceIpc => ({
         method: 'POST',
         headers: headers
       };
-      var req = http.request(options, function (res) {
+      var req = https.request(options, function (res) {
         res.setEncoding('utf-8');
         var responseString = '';
         res.on('data', function (data) {

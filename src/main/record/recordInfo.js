@@ -2,21 +2,19 @@ import recordInfoIpc from '../ipc/ipcRecordMsg'
 const dbInit  = require('../sqlite/init');
 var schedule = require('node-schedule');
 
-var rule = new schedule.RecurrenceRule();
-var times = [];
-for(var i = 1; i < 60; i += 5){
-  times.push(i);
-}
-rule.second = times;
+// var rule = new schedule.RecurrenceRule();
+// var times = [];
+// for(var i = 1; i < 60; i += 4){
+//   times.push(i);
+// }
+// rule.second = times;
 
 const recordInfo = _recordInfoIpc => ({
-
   ['record'](event, accountId) {
-    var j = schedule.scheduleJob(rule, function() {
+    // var j = schedule.scheduleJob(rule, function() {
       const requestBack = data => {
         _recordInfoIpc.sendToClient('record-back', data)
     };
-
     var db = dbInit.checkCreateLinkeyeDb();
     if(!db){
       console.log("db handle is null");
@@ -27,7 +25,7 @@ const recordInfo = _recordInfoIpc => ({
       })
     } else {
       console.log("get accountId from front success, accountId is " + accountId);
-      var sql = "select * from record where account_id = " + "\'" + accountId + "\' order by send_time desc";
+      var sql = "select * from record where account_id = " + "\'" + accountId + "\' order by strftime('%s', send_time) asc";
       db.all(sql, function(err, res) {
         if(!err) {
           var result= JSON.stringify(res);
@@ -46,7 +44,7 @@ const recordInfo = _recordInfoIpc => ({
         }
       });
     }
-    })
+   // })
   }
 });
 

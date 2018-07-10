@@ -70,10 +70,10 @@ module.exports =
 
 exports.CLIENT_NORMAL_MSG = 'CLIENT_NORMAL_MSG';
 exports.CRAWLER_NORMAL_MSG = 'CRAWLER_NORMAL_MSG';
-exports.SEVER_IP = '47.94.158.122';
-exports.SEVER_PORT = 81;
-exports.DATABASE_PATH = '/Users/guo/Desktop/';
-exports.KEYSTOR_PATH = '/Users/guo/Desktop/testwallet/keystore/';
+exports.SEVER_IP = 'wallet.linkeye.com';
+exports.SEVER_PORT = 443;
+exports.DATABASE_PATH = '/Users/Shared/linkdata/';
+exports.KEYSTOR_PATH = '/Users/Shared/keystore/';
 
 /***/ }),
 /* 1 */
@@ -168,9 +168,9 @@ var _require = __webpack_require__(0),
 
 var fs = __webpack_require__(4);
 var path = __webpack_require__(7);
-var sqlite3 = __webpack_require__(104).verbose();
+var sqlite3 = __webpack_require__(103).verbose();
 
-var propath = __webpack_require__(105);
+var propath = __webpack_require__(104);
 
 var file = "linkeye.db";
 
@@ -260,7 +260,7 @@ module.exports = require("path");
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(87), __esModule: true };
+module.exports = { "default": __webpack_require__(98), __esModule: true };
 
 /***/ }),
 /* 9 */
@@ -276,6 +276,12 @@ module.exports = require("util");
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("https");
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
@@ -285,7 +291,7 @@ module.exports = !__webpack_require__(34)(function () {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var crypto = __webpack_require__(35);
@@ -301,11 +307,11 @@ function passwordScropt(password) {
 exports.handlePassword = passwordScropt;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var v1 = __webpack_require__(101);
-var v4 = __webpack_require__(102);
+var v1 = __webpack_require__(100);
+var v4 = __webpack_require__(101);
 
 var uuid = v4;
 uuid.v1 = v1;
@@ -313,12 +319,6 @@ uuid.v4 = v4;
 
 module.exports = uuid;
 
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-module.exports = require("http");
 
 /***/ }),
 /* 15 */
@@ -1308,7 +1308,7 @@ module.exports = function (it) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_createLogin__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_createLogin__ = __webpack_require__(118);
 
 
 
@@ -2806,7 +2806,7 @@ var _path = __webpack_require__(7);
 
 var _path2 = _interopRequireDefault(_path);
 
-var _https = __webpack_require__(86);
+var _https = __webpack_require__(11);
 
 var _https2 = _interopRequireDefault(_https);
 
@@ -2856,29 +2856,26 @@ var changePermissions = exports.changePermissions = function changePermissions(d
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_electron__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcCreateAccountMsg__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ipc_ipcCreateAccountNameMsg__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ipc_ipcRecordMsg__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ipc_ipcSendMsg__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ipc_ipcBalanceMsg__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ipc_ipcGenerateAccountMsg__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ipc_ipcAccountList__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ipc_ipcAffirmTransaction__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ipc_ipcNormalSettingMsg__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ipc_ipcAccountSettingMsg__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ipc_ipcCreateDatabaseTableMsg__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ipc_ipcCreateLoginMsg__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ipc_ipcMarkPage__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ipc_ipcImportKeyMsg__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ipc_ipcExportKeyMsg__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ipc_ipcStorePrivateKeyMsg__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ipc_ipcGeneratePathMsg__ = __webpack_require__(54);
-
-
+/* WEBPACK VAR INJECTION */(function(__dirname) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_electron___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_electron__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcCreateAccountMsg__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcCreateAccountNameMsg__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ipc_ipcRecordMsg__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ipc_ipcSendMsg__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ipc_ipcBalanceMsg__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ipc_ipcGenerateAccountMsg__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ipc_ipcAccountList__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ipc_ipcAffirmTransaction__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ipc_ipcNormalSettingMsg__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ipc_ipcAccountSettingMsg__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ipc_ipcCreateDatabaseTableMsg__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ipc_ipcCreateLoginMsg__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ipc_ipcMarkPage__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ipc_ipcImportKeyMsg__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ipc_ipcExportKeyMsg__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ipc_ipcStorePrivateKeyMsg__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ipc_ipcGeneratePathMsg__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ipc_ipcQueryBlockMsg__ = __webpack_require__(54);
 var _require = __webpack_require__(0),
     SEVER_IP = _require.SEVER_IP,
     SEVER_PORT = _require.SEVER_PORT;
@@ -2901,88 +2898,7 @@ var _require = __webpack_require__(0),
 
 
 
-var schedule = __webpack_require__(41);
-var http = __webpack_require__(14);
-var dbInit = __webpack_require__(5);
 
-var rule = new schedule.RecurrenceRule();
-var times = [];
-for (var i = 1; i < 60; i += 5) {
-  times.push(i);
-}
-rule.second = times;
-
-var j = schedule.scheduleJob(rule, function () {
-
-  var db = dbInit.checkCreateLinkeyeDb();
-  if (!db) {
-    console.log("db handle is null");
-    return;
-  } else {
-    var errThree = dbInit.createSendTable("record", db);
-    if (errThree == "errtwo") {
-      console.log('create record table fail');
-      return;
-    }
-  }
-  var body = {
-    "jsonrpc": "2.0",
-    "method": "let_blockNumber",
-    "params": [],
-    "id": 83
-  };
-  var bodyString = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(body);
-  var headers = {
-    'Content-Type': 'application/json',
-    'Content-Length': bodyString.length
-  };
-  var options = {
-    host: SEVER_IP,
-    port: SEVER_PORT,
-    path: '',
-    method: 'POST',
-    headers: headers
-  };
-  var req = http.request(options, function (res) {
-    res.setEncoding('utf-8');
-    var responseString = '';
-    res.on('data', function (data) {
-      responseString += data;
-      console.log("get block number from wallet node success and back data is " + data);
-      var blockNumberStr = JSON.parse(data);
-      var blockNumber = parseInt(blockNumberStr.result, 16);
-      var db = dbInit.checkCreateLinkeyeDb();
-      if (!db) {
-        console.log("db handle is null");
-      } else {
-        console.log("start to operate database");
-        var sql = "SELECT send_id, account_id, send_time, account_addr_from, account_addr_to, send_balance, service_charge, comment, send_status, block_number " + "FROM record where send_status = '1'";
-        db.all(sql, function w(err, row) {
-          console.log("Query record database success and the data is" + __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(row));
-          var recordInfo = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default()(row);
-          for (var i = 0; i < row.length; i++) {
-            if (blockNumber - parseInt(row[i].block_number) > 3) {
-              var modify = db.prepare("UPDATE record set send_status=?, block_number=? where send_id = ?");
-              modify.run("0", row[i].block_number, row[i].send_id);
-              modify.finalize();
-            }
-          }
-        });
-        db.close();
-      }
-      console.log("block number from wallet is " + blockNumber);
-    });
-
-    res.on('end', function (res) {
-      console.log("response end");
-    });
-    req.on('error', function (e) {
-      console.log('error occur,error is', e);
-    });
-  });
-  req.write(bodyString);
-  req.end();
-});
 
 if (process.env.NODE_ENV !== 'development') {
   global.__static = __webpack_require__(7).join(__dirname, '/static').replace(/\\/g, '\\\\');
@@ -2993,46 +2909,46 @@ var mainWindow = void 0;
 var winURL = process.env.NODE_ENV === 'development' ? 'http://localhost:9089' + '' : 'file://' + __dirname + '/index.html';
 
 function createWindow() {
-  mainWindow = new __WEBPACK_IMPORTED_MODULE_1_electron__["BrowserWindow"]({
-    height: 800,
-    useContentSize: true,
+  mainWindow = new __WEBPACK_IMPORTED_MODULE_0_electron__["BrowserWindow"]({
+    useContentSize: false,
+    height: 580,
     width: 960,
     webPreferences: {
       webSecurity: false
     }
   });
+  mainWindow.setResizable(false);
+  mainWindow.setMaximizable(false);
   mainWindow.loadURL(winURL);
-  mainWindow.on('closed', function () {
-    mainWindow = null;
-  });
-  new __WEBPACK_IMPORTED_MODULE_2__ipc_ipcCreateAccountMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_3__ipc_ipcCreateAccountNameMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_4__ipc_ipcRecordMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_5__ipc_ipcSendMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_6__ipc_ipcBalanceMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_7__ipc_ipcGenerateAccountMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_8__ipc_ipcAccountList__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_9__ipc_ipcAffirmTransaction__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_10__ipc_ipcNormalSettingMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_11__ipc_ipcAccountSettingMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_12__ipc_ipcCreateDatabaseTableMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_13__ipc_ipcCreateLoginMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_14__ipc_ipcMarkPage__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_15__ipc_ipcImportKeyMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_16__ipc_ipcExportKeyMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_17__ipc_ipcStorePrivateKeyMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
-  new __WEBPACK_IMPORTED_MODULE_18__ipc_ipcGeneratePathMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_1_electron__["ipcMain"], mainWindow.webContents);
+
+  new __WEBPACK_IMPORTED_MODULE_1__ipc_ipcCreateAccountMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_2__ipc_ipcCreateAccountNameMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_3__ipc_ipcRecordMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_4__ipc_ipcSendMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_5__ipc_ipcBalanceMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_6__ipc_ipcGenerateAccountMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_7__ipc_ipcAccountList__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_8__ipc_ipcAffirmTransaction__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_9__ipc_ipcNormalSettingMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_10__ipc_ipcAccountSettingMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_11__ipc_ipcCreateDatabaseTableMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_12__ipc_ipcCreateLoginMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_13__ipc_ipcMarkPage__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_14__ipc_ipcImportKeyMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_15__ipc_ipcExportKeyMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_16__ipc_ipcStorePrivateKeyMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_17__ipc_ipcGeneratePathMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
+  new __WEBPACK_IMPORTED_MODULE_18__ipc_ipcQueryBlockMsg__["a" /* default */](__WEBPACK_IMPORTED_MODULE_0_electron__["ipcMain"], mainWindow.webContents);
 }
 
-__WEBPACK_IMPORTED_MODULE_1_electron__["app"].on('ready', createWindow);
-
-__WEBPACK_IMPORTED_MODULE_1_electron__["app"].on('window-all-closed', function () {
+__WEBPACK_IMPORTED_MODULE_0_electron__["app"].on('ready', createWindow);
+__WEBPACK_IMPORTED_MODULE_0_electron__["app"].on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
-    __WEBPACK_IMPORTED_MODULE_1_electron__["app"].quit();
+    __WEBPACK_IMPORTED_MODULE_0_electron__["app"].quit();
   }
 });
 
-__WEBPACK_IMPORTED_MODULE_1_electron__["app"].on('activate', function () {
+__WEBPACK_IMPORTED_MODULE_0_electron__["app"].on('activate', function () {
   if (mainWindow === null) {
     createWindow();
   }
@@ -3048,7 +2964,7 @@ __WEBPACK_IMPORTED_MODULE_1_electron__["app"].on('activate', function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_createAccount__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_createAccount__ = __webpack_require__(97);
 
 
 
@@ -3105,7 +3021,7 @@ var createAccountIpc = function () {
 /* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(88), __esModule: true };
+module.exports = { "default": __webpack_require__(86), __esModule: true };
 
 /***/ }),
 /* 32 */
@@ -3123,12 +3039,12 @@ if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(94);
-var IE8_DOM_DEFINE = __webpack_require__(95);
-var toPrimitive = __webpack_require__(97);
+var anObject = __webpack_require__(92);
+var IE8_DOM_DEFINE = __webpack_require__(93);
+var toPrimitive = __webpack_require__(95);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(11) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(12) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -3169,7 +3085,7 @@ module.exports = require("crypto");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_createAccountName__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_createAccountName__ = __webpack_require__(99);
 
 
 
@@ -3312,7 +3228,7 @@ module.exports = bytesToUuid;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__record_recordInfo__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__record_recordInfo__ = __webpack_require__(102);
 
 
 
@@ -3367,12 +3283,6 @@ var recordInfoIpc = function () {
 
 /***/ }),
 /* 41 */
-/***/ (function(module, exports) {
-
-module.exports = require("node-schedule");
-
-/***/ }),
-/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3434,13 +3344,13 @@ var sendTransactionIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (sendTransactionIpc);
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = require("web3");
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3502,7 +3412,7 @@ var getAccountBalanceIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (getAccountBalanceIpc);
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3564,7 +3474,7 @@ var generateAccountIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (generateAccountIpc);
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3626,7 +3536,7 @@ var accountListIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (accountListIpc);
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3688,7 +3598,7 @@ var affirmTransactionIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (affirmTransactionIpc);
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3696,7 +3606,7 @@ var affirmTransactionIpc = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setting_normalSetting__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setting_normalSetting__ = __webpack_require__(115);
 
 
 
@@ -3750,7 +3660,7 @@ var normalSettingIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (normalSettingIpc);
 
 /***/ }),
-/* 49 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3758,7 +3668,7 @@ var normalSettingIpc = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setting_accountSetting__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setting_accountSetting__ = __webpack_require__(116);
 
 
 
@@ -3812,7 +3722,7 @@ var accountSettingIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (accountSettingIpc);
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3820,7 +3730,7 @@ var accountSettingIpc = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_createDatabaseTable__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_createDatabaseTable__ = __webpack_require__(117);
 
 
 
@@ -3874,7 +3784,7 @@ var createDatabaseTableIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (createDatabaseTableIpc);
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3882,7 +3792,7 @@ var createDatabaseTableIpc = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_importKey__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_importKey__ = __webpack_require__(121);
 
 
 
@@ -3936,7 +3846,7 @@ var importKeyIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (importKeyIpc);
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3944,7 +3854,7 @@ var importKeyIpc = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_exportKey__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_exportKey__ = __webpack_require__(122);
 
 
 
@@ -3998,7 +3908,7 @@ var exportPrivateKeyIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (exportPrivateKeyIpc);
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4006,7 +3916,7 @@ var exportPrivateKeyIpc = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_storePrivateKey__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_storePrivateKey__ = __webpack_require__(123);
 
 
 
@@ -4060,7 +3970,7 @@ var storePrivateKeyIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (storePrivateKeyIpc);
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4068,7 +3978,7 @@ var storePrivateKeyIpc = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_generatePath__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__key_generatePath__ = __webpack_require__(124);
 
 
 
@@ -4120,6 +4030,68 @@ var generatePathIpc = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (generatePathIpc);
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__block_queryBlock__ = __webpack_require__(125);
+
+
+
+
+var _require = __webpack_require__(0),
+    CLIENT_NORMAL_MSG = _require.CLIENT_NORMAL_MSG,
+    CRAWLER_NORMAL_MSG = _require.CRAWLER_NORMAL_MSG;
+
+var queryBlockIpc = function () {
+  function queryBlockIpc(listener, sender) {
+    __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default()(this, queryBlockIpc);
+
+    this.listener = listener;
+    this.sender = sender;
+    this.addListener(CLIENT_NORMAL_MSG, this.handleFn.bind(this));
+    this.handlerQueryBlockIpc = Object(__WEBPACK_IMPORTED_MODULE_2__block_queryBlock__["a" /* default */])(this);
+  }
+
+  __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default()(queryBlockIpc, [{
+    key: 'handleFn',
+    value: function handleFn(event, data) {
+      try {
+        this.handlerQueryBlockIpc[data.type](event, data.data);
+      } catch (error) {
+        console.error('handler event error:' + error.message);
+      }
+    }
+  }, {
+    key: 'addListener',
+    value: function addListener(chanel, cb) {
+      this.listener.on(chanel, cb);
+    }
+  }, {
+    key: '_sendMsg',
+    value: function _sendMsg(chanel, msgBody) {
+      this.sender.send(chanel, msgBody);
+    }
+  }, {
+    key: 'sendToClient',
+    value: function sendToClient(type, data) {
+      this._sendMsg(CRAWLER_NORMAL_MSG, {
+        type: type,
+        data: data
+      });
+    }
+  }]);
+
+  return queryBlockIpc;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (queryBlockIpc);
 
 /***/ }),
 /* 55 */
@@ -8749,26 +8721,9 @@ module.exports = {"_args":[["7zip@0.0.6","/Users/guo/Desktop/linkeye-vue-wallet"
 
 /***/ }),
 /* 86 */
-/***/ (function(module, exports) {
-
-module.exports = require("https");
-
-/***/ }),
-/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(18);
-var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
-module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
-  return $JSON.stringify.apply($JSON, arguments);
-};
-
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(89);
+__webpack_require__(87);
 var $Object = __webpack_require__(18).Object;
 module.exports = function defineProperty(it, key, desc) {
   return $Object.defineProperty(it, key, desc);
@@ -8776,22 +8731,22 @@ module.exports = function defineProperty(it, key, desc) {
 
 
 /***/ }),
-/* 89 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $export = __webpack_require__(90);
+var $export = __webpack_require__(88);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(11), 'Object', { defineProperty: __webpack_require__(33).f });
+$export($export.S + $export.F * !__webpack_require__(12), 'Object', { defineProperty: __webpack_require__(33).f });
 
 
 /***/ }),
-/* 90 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(32);
 var core = __webpack_require__(18);
-var ctx = __webpack_require__(91);
-var hide = __webpack_require__(93);
+var ctx = __webpack_require__(89);
+var hide = __webpack_require__(91);
 var PROTOTYPE = 'prototype';
 
 var $export = function (type, name, source) {
@@ -8852,11 +8807,11 @@ module.exports = $export;
 
 
 /***/ }),
-/* 91 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(92);
+var aFunction = __webpack_require__(90);
 module.exports = function (fn, that, length) {
   aFunction(fn);
   if (that === undefined) return fn;
@@ -8878,7 +8833,7 @@ module.exports = function (fn, that, length) {
 
 
 /***/ }),
-/* 92 */
+/* 90 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -8888,12 +8843,12 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 93 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(33);
-var createDesc = __webpack_require__(98);
-module.exports = __webpack_require__(11) ? function (object, key, value) {
+var createDesc = __webpack_require__(96);
+module.exports = __webpack_require__(12) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -8902,7 +8857,7 @@ module.exports = __webpack_require__(11) ? function (object, key, value) {
 
 
 /***/ }),
-/* 94 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(19);
@@ -8913,16 +8868,16 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 95 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(11) && !__webpack_require__(34)(function () {
-  return Object.defineProperty(__webpack_require__(96)('div'), 'a', { get: function () { return 7; } }).a != 7;
+module.exports = !__webpack_require__(12) && !__webpack_require__(34)(function () {
+  return Object.defineProperty(__webpack_require__(94)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
 /***/ }),
-/* 96 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(19);
@@ -8935,7 +8890,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 97 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -8953,7 +8908,7 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 98 */
+/* 96 */
 /***/ (function(module, exports) {
 
 module.exports = function (bitmap, value) {
@@ -8967,7 +8922,7 @@ module.exports = function (bitmap, value) {
 
 
 /***/ }),
-/* 99 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8984,7 +8939,7 @@ var _require = __webpack_require__(0),
     KEYSTOR_PATH = _require.KEYSTOR_PATH;
 
 var keythereum = __webpack_require__(9);
-var pwd = __webpack_require__(12);
+var pwd = __webpack_require__(13);
 var fs = __webpack_require__(4);
 
 var createAccount = function createAccount(_createAccountIpc) {
@@ -9038,7 +8993,18 @@ var createAccount = function createAccount(_createAccountIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (createAccount);
 
 /***/ }),
-/* 100 */
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(18);
+var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
+
+
+/***/ }),
+/* 99 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9053,7 +9019,7 @@ var createAccount = function createAccount(_createAccountIpc) {
 var _require = __webpack_require__(6),
     shell = _require.shell;
 
-var UUID = __webpack_require__(13);
+var UUID = __webpack_require__(14);
 
 var createAccountName = function createAccountName(_createAccountNameIpc) {
   return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()({}, 'account-name', function accountName(event, _accountName) {
@@ -9080,7 +9046,7 @@ var createAccountName = function createAccountName(_createAccountNameIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (createAccountName);
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var rng = __webpack_require__(38);
@@ -9195,7 +9161,7 @@ module.exports = v1;
 
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var rng = __webpack_require__(38);
@@ -9230,7 +9196,7 @@ module.exports = v4;
 
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9243,65 +9209,55 @@ module.exports = v4;
 
 
 var dbInit = __webpack_require__(5);
-var schedule = __webpack_require__(41);
-
-var rule = new schedule.RecurrenceRule();
-var times = [];
-for (var i = 1; i < 60; i += 5) {
-  times.push(i);
-}
-rule.second = times;
+var schedule = __webpack_require__(105);
 
 var recordInfo = function recordInfo(_recordInfoIpc) {
   return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()({}, 'record', function record(event, accountId) {
-    var j = schedule.scheduleJob(rule, function () {
-      var requestBack = function requestBack(data) {
-        _recordInfoIpc.sendToClient('record-back', data);
-      };
-
-      var db = dbInit.checkCreateLinkeyeDb();
-      if (!db) {
-        console.log("db handle is null");
-        requestBack({
-          success: false,
-          error: "db handle is null",
-          errorCode: 909
-        });
-      } else {
-        console.log("get accountId from front success, accountId is " + accountId);
-        var sql = "select * from record where account_id = " + "\'" + accountId + "\' order by send_time desc";
-        db.all(sql, function (err, res) {
-          if (!err) {
-            var result = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(res);
-            console.log("Get record from database is " + result);
-            requestBack({
-              success: true,
-              recordInfo: result
-            });
-          } else {
-            console.log("error occur， error is" + err);
-            requestBack({
-              success: false,
-              error: err,
-              errorCode: 910
-            });
-          }
-        });
-      }
-    });
+    var requestBack = function requestBack(data) {
+      _recordInfoIpc.sendToClient('record-back', data);
+    };
+    var db = dbInit.checkCreateLinkeyeDb();
+    if (!db) {
+      console.log("db handle is null");
+      requestBack({
+        success: false,
+        error: "db handle is null",
+        errorCode: 909
+      });
+    } else {
+      console.log("get accountId from front success, accountId is " + accountId);
+      var sql = "select * from record where account_id = " + "\'" + accountId + "\' order by strftime('%s', send_time) asc";
+      db.all(sql, function (err, res) {
+        if (!err) {
+          var result = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(res);
+          console.log("Get record from database is " + result);
+          requestBack({
+            success: true,
+            recordInfo: result
+          });
+        } else {
+          console.log("error occur， error is" + err);
+          requestBack({
+            success: false,
+            error: err,
+            errorCode: 910
+          });
+        }
+      });
+    }
   });
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (recordInfo);
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports) {
 
 module.exports = require("sqlite3");
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports) {
 
 
@@ -9312,6 +9268,12 @@ function getProjectPath() {
 exports.handlePath = getProjectPath;
 
 /***/ }),
+/* 105 */
+/***/ (function(module, exports) {
+
+module.exports = require("node-schedule");
+
+/***/ }),
 /* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9320,7 +9282,7 @@ exports.handlePath = getProjectPath;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcSendMsg__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcSendMsg__ = __webpack_require__(41);
 
 
 
@@ -9331,9 +9293,9 @@ var _require = __webpack_require__(0),
 
 var dba = __webpack_require__(37);
 var dbInit = __webpack_require__(5);
-var http = __webpack_require__(14);
+var https = __webpack_require__(11);
 var _send = __webpack_require__(107);
-var pwd = __webpack_require__(12);
+var pwd = __webpack_require__(13);
 var sendRecord = __webpack_require__(109);
 var keythereum = __webpack_require__(9);
 
@@ -9401,7 +9363,7 @@ var sendTransaction = function sendTransaction(_sendTransactionIpc) {
                   headers: headers
                 };
 
-                var req = http.request(options, function (res) {
+                var req = https.request(options, function (res) {
                   res.setEncoding('utf-8');
                   var responseString = '';
                   res.on('data', function (data) {
@@ -9441,7 +9403,7 @@ var sendTransaction = function sendTransaction(_sendTransactionIpc) {
                       headers: headers
                     };
 
-                    var req = http.request(options, function (res) {
+                    var req = https.request(options, function (res) {
                       res.setEncoding('utf-8');
                       var responseString = '';
                       res.on('data', function (data) {
@@ -9468,7 +9430,7 @@ var sendTransaction = function sendTransaction(_sendTransactionIpc) {
                           method: 'POST',
                           headers: headers
                         };
-                        var req = http.request(options, function (res) {
+                        var req = https.request(options, function (res) {
                           res.setEncoding('utf-8');
                           var responseString = '';
                           res.on('data', function (data) {
@@ -9559,7 +9521,7 @@ var sendTransaction = function sendTransaction(_sendTransactionIpc) {
 
 var transaction = __webpack_require__(108);
 var dbInit = __webpack_require__(5);
-var Web3 = __webpack_require__(43);
+var Web3 = __webpack_require__(42);
 
 if (typeof web3 !== 'undefined') {
   var web3 = new Web3(web3.currentProvider);
@@ -9626,11 +9588,11 @@ module.exports = require("ethereumjs-tx");
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var UUID = __webpack_require__(13);
+var UUID = __webpack_require__(14);
 var dbInit = __webpack_require__(5);
 
 function sendRcordData(fromAddress, accountId, toAddress, sendToBalance, sendFee, sendContent, status, blockNumber, transHash) {
-  if (!fromAddress || !accountId || !toAddress || !sendToBalance || !sendFee || !sendContent || !status == null) {
+  if (!fromAddress || !accountId || !toAddress || !sendToBalance || !sendFee || !status == null) {
     console.log("one of these params is null");
   } else {
     var uuidId = UUID.v1();
@@ -9676,7 +9638,7 @@ exports.sendRcordData = sendRcordData;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcBalanceMsg__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcBalanceMsg__ = __webpack_require__(43);
 
 
 
@@ -9685,8 +9647,8 @@ var _require = __webpack_require__(0),
     SEVER_IP = _require.SEVER_IP,
     SEVER_PORT = _require.SEVER_PORT;
 
-var http = __webpack_require__(14);
-var Web3 = __webpack_require__(43);
+var https = __webpack_require__(11);
+var Web3 = __webpack_require__(42);
 
 if (typeof web3 !== 'undefined') {
   var web3 = new Web3(web3.currentProvider);
@@ -9720,6 +9682,7 @@ var getAccountBalance = function getAccountBalance(_getAccountBalanceIpc) {
         'Content-Type': 'application/json',
         'Content-Length': bodyString.length
       };
+
       var options = {
         host: SEVER_IP,
         port: SEVER_PORT,
@@ -9727,7 +9690,7 @@ var getAccountBalance = function getAccountBalance(_getAccountBalanceIpc) {
         method: 'POST',
         headers: headers
       };
-      var req = http.request(options, function (res) {
+      var req = https.request(options, function (res) {
         res.setEncoding('utf-8');
         var responseString = '';
         res.on('data', function (data) {
@@ -9768,7 +9731,7 @@ var getAccountBalance = function getAccountBalance(_getAccountBalanceIpc) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcGenerateAccountMsg__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcGenerateAccountMsg__ = __webpack_require__(44);
 
 
 
@@ -9776,7 +9739,7 @@ var _require = __webpack_require__(6),
     shell = _require.shell;
 
 var keythereum = __webpack_require__(9);
-var pwd = __webpack_require__(12);
+var pwd = __webpack_require__(13);
 var dbInit = __webpack_require__(5);
 
 var generateAccount = function generateAccount(_generateAccountIpc) {
@@ -9842,7 +9805,7 @@ var generateAccount = function generateAccount(_generateAccountIpc) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcAccountList__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcAccountList__ = __webpack_require__(45);
 
 
 
@@ -9908,11 +9871,11 @@ var accountList = function accountList(_accountListIpc) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcAffirmTransaction__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcAffirmTransaction__ = __webpack_require__(46);
 
 
 
-var http = __webpack_require__(14);
+var http = __webpack_require__(114);
 
 var affirmTransAction = function affirmTransAction(_affirmTransActionIpc) {
   return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()({}, 'affirm', function affirm(event, affirmInfo) {
@@ -9980,12 +9943,18 @@ var affirmTransAction = function affirmTransAction(_affirmTransActionIpc) {
 
 /***/ }),
 /* 114 */
+/***/ (function(module, exports) {
+
+module.exports = require("http");
+
+/***/ }),
+/* 115 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcNormalSettingMsg__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcNormalSettingMsg__ = __webpack_require__(47);
 
 
 
@@ -10042,7 +10011,7 @@ var normalSetting = function normalSetting(_normalSettingIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (normalSetting);
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10050,7 +10019,7 @@ var normalSetting = function normalSetting(_normalSettingIpc) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcAccountSettingMsg__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcAccountSettingMsg__ = __webpack_require__(48);
 
 
 
@@ -10151,7 +10120,7 @@ var normalSetting = function normalSetting(_accountSettingIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (normalSetting);
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10159,7 +10128,7 @@ var normalSetting = function normalSetting(_accountSettingIpc) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcCreateDatabaseTableMsg__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcCreateDatabaseTableMsg__ = __webpack_require__(49);
 
 
 
@@ -10247,7 +10216,7 @@ var createDatabaseTable = function createDatabaseTable(_createDatabaseTableIpc) 
 /* harmony default export */ __webpack_exports__["a"] = (createDatabaseTable);
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10308,7 +10277,7 @@ var createLogin = function createLogin(_createLoginIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (createLogin);
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10316,7 +10285,7 @@ var createLogin = function createLogin(_createLoginIpc) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_markPage__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_markPage__ = __webpack_require__(120);
 
 
 
@@ -10370,7 +10339,7 @@ var markPageIpc = function () {
 /* harmony default export */ __webpack_exports__["a"] = (markPageIpc);
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10380,9 +10349,9 @@ var markPageIpc = function () {
 
 
 
-var pwd = __webpack_require__(12);
+var pwd = __webpack_require__(13);
 var dbInit = __webpack_require__(5);
-var uuid = __webpack_require__(13);
+var uuid = __webpack_require__(14);
 
 var markPage = function markPage(_markPageIpc) {
   return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()({}, 'mark', function mark(event, markFlag) {
@@ -10418,7 +10387,7 @@ var markPage = function markPage(_markPageIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (markPage);
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10426,7 +10395,7 @@ var markPage = function markPage(_markPageIpc) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcImportKeyMsg__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcImportKeyMsg__ = __webpack_require__(50);
 
 
 
@@ -10435,7 +10404,7 @@ var _require = __webpack_require__(0),
     KEYSTOR_PATH = _require.KEYSTOR_PATH;
 
 var keythereum = __webpack_require__(9);
-var UUID = __webpack_require__(13);
+var UUID = __webpack_require__(14);
 var dbInit = __webpack_require__(5);
 var fs = __webpack_require__(4);
 
@@ -10516,14 +10485,8 @@ var importPrivateKey = function importPrivateKey(_importPrivateKeyIpc) {
           } else {
             var sql = "SELECT account_address FROM account where account_address = " + "\'" + keyObject.address + "\'";
             db.all(sql, function w(err, row) {
-              console.log("Query account address success and account address is " + row.account_address);
-              if (row.account_address == keyObject.address) {
-                requestBack({
-                  success: false,
-                  error: "account have already existed",
-                  errorCode: 603
-                });
-              } else {
+              console.log("query database success and the length of row is " + row.length);
+              if (row.length == 0) {
                 var insert = db.prepare("INSERT INTO account(account_id, account_name, account_passwd, account_address, account_keystore, account_ciphertext_private_key) VALUES (?, ?, ?, ?, ?, ?)");
                 insert.run(accountId, generateAccountNaem(true, 7, 7), importKey.password, keyObject.address, __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(keyObject), keyObject.crypto.ciphertext);
                 insert.finalize();
@@ -10533,6 +10496,16 @@ var importPrivateKey = function importPrivateKey(_importPrivateKeyIpc) {
                   success: true,
                   generateMsg: "success"
                 });
+              } else {
+                for (var i = 0; i < row.length; i++) {
+                  if (row[i].account_address == keyObject.address) {
+                    requestBack({
+                      success: false,
+                      error: "account have already existed",
+                      errorCode: 603
+                    });
+                  }
+                }
               }
             });
           }
@@ -10551,13 +10524,13 @@ var importPrivateKey = function importPrivateKey(_importPrivateKeyIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (importPrivateKey);
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcExportKeyMsg__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcExportKeyMsg__ = __webpack_require__(51);
 
 
 
@@ -10618,13 +10591,13 @@ var exportPrivateKey = function exportPrivateKey(_exportPrivateKeyIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (exportPrivateKey);
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcStorePrivateKeyMsg__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcStorePrivateKeyMsg__ = __webpack_require__(52);
 
 
 var fs = __webpack_require__(4);
@@ -10678,13 +10651,13 @@ var storePrivateKey = function storePrivateKey(_storePrivateKeyIpc) {
 /* harmony default export */ __webpack_exports__["a"] = (storePrivateKey);
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcGeneratePathMsg__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipc_ipcGeneratePathMsg__ = __webpack_require__(53);
 
 
 
@@ -10723,6 +10696,106 @@ var generatePath = function generatePath(_generatePathIpc) {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (generatePath);
+
+/***/ }),
+/* 125 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ipc_ipcQueryBlockMsg__ = __webpack_require__(54);
+
+
+
+
+var _require = __webpack_require__(0),
+    SEVER_IP = _require.SEVER_IP,
+    SEVER_PORT = _require.SEVER_PORT;
+
+var https = __webpack_require__(11);
+var dbInit = __webpack_require__(5);
+
+var queryBlock = function queryBlock(_queryBlockIpc) {
+  return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()({}, 'block', function block(event, blockInfo) {
+    var requestBack = function requestBack(data) {
+      _queryBlockIpc.sendToClient('block-back', data);
+    };
+    if (blockInfo != null) {
+      var db = dbInit.checkCreateLinkeyeDb();
+      if (!db) {
+        console.log("db handle is null");
+        return;
+      } else {
+        var errThree = dbInit.createSendTable("record", db);
+        if (errThree == "errtwo") {
+          console.log('create record table fail');
+          return;
+        }
+      }
+      var body = {
+        "jsonrpc": "2.0",
+        "method": "let_blockNumber",
+        "params": [],
+        "id": 83
+      };
+      var bodyString = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(body);
+      var headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': bodyString.length
+      };
+      var options = {
+        host: SEVER_IP,
+        port: SEVER_PORT,
+        path: '',
+        method: 'POST',
+        headers: headers
+      };
+      var req = https.request(options, function (res) {
+        res.setEncoding('utf-8');
+        var responseString = '';
+        res.on('data', function (data) {
+          responseString += data;
+          console.log("get block number from wallet node success and back data is " + data);
+          var blockNumberStr = JSON.parse(data);
+          var blockNumber = parseInt(blockNumberStr.result, 16);
+          var db = dbInit.checkCreateLinkeyeDb();
+          if (!db) {
+            console.log("db handle is null");
+          } else {
+            console.log("start to operate database");
+            var sql = "SELECT send_id, account_id, send_time, account_addr_from, account_addr_to, send_balance, service_charge, comment, send_status, block_number " + "FROM record where send_status = '1'";
+            db.all(sql, function w(err, row) {
+              console.log("Query record database success and the data is" + __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(row));
+              var recordInfo = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default()(row);
+              for (var i = 0; i < row.length; i++) {
+                if (blockNumber - parseInt(row[i].block_number) > 3) {
+                  var modify = db.prepare("UPDATE record set send_status=?, block_number=? where send_id = ?");
+                  modify.run("0", row[i].block_number, row[i].send_id);
+                  modify.finalize();
+                }
+              }
+            });
+            db.close();
+          }
+          console.log("block number from wallet is " + blockNumber);
+        });
+        res.on('end', function (res) {
+          console.log("response end");
+        });
+        req.on('error', function (e) {
+          console.log('error occur,error is', e);
+        });
+      });
+      req.write(bodyString);
+      req.end();
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (queryBlock);
 
 /***/ })
 /******/ ]);

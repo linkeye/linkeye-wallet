@@ -1,0 +1,153 @@
+/* 清除默认样式的文件 - 基础 */
+body
+{
+    font-size: 12px;
+}
+body,
+html
+{
+    width: 960px;
+    height: 580px;
+}
+*
+{
+    /*font-family: PingFangSC-Regular,Arial,"Helvetica Neue",Helvetica,sans-serif;*/
+    font-family: 'PingFangSC-Regular','PingFangSC-Thin', PingFangSC-Regular,Arial,'Helvetica Neue',Helvetica,sans-serif;
+
+    margin: 0;
+    padding: 0;
+
+    text-align: left;
+}
+
+
+input
+{
+    /*font-family: PingFangSC-Regular,Arial,"Helvetica Neue",Helvetica,sans-serif;*/
+    font-family: 'PingFangSC-Regular','PingFangSC-Thin', PingFangSC-Regular,Arial,'Helvetica Neue',Helvetica,sans-serif;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder
+{
+    color: #ccc;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder
+{
+    color: #ccc;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder
+{
+    color: #ccc;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder
+{
+    color: #ccc;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    font-family: 'PingFangSC-Regular','PingFangSC-Thin', PingFangSC-Regular,Arial,'Helvetica Neue',Helvetica,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+a
+{
+    text-decoration: none;
+
+    color: #000;
+}
+
+ul,
+ol
+{
+    list-style: none;
+}
+i,
+em
+{
+    font-style: normal;
+}
+b,
+strong
+{
+    font-weight: normal;
+}
+a img
+{
+    border: none;
+}
+img
+{
+    display: block;
+}
+.clearfix:after
+{
+    display: block;
+    clear: both;
+
+    content: '';
+}
+/*移动端点击背景色*/
+*
+{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+       -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+        -ms-tap-highlight-color: rgba(0, 0, 0, 0);
+         -o-tap-highlight-color: rgba(0, 0, 0, 0);
+            tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+
+/* 公共样式部分 */
+/*弹性盒子样式*/
+.flex_box_div
+{
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display:    -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display:         flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.page_padding_l_r
+{
+    width: calc(100% - 1.106rem);
+    padding-right: .533rem;
+    padding-left: .533rem;
+}
+
+p
+{
+    margin: 0;
+}
+
+/* 公共按钮样式 */
+.common_btn
+{
+    font-size: 18px;
+    line-height: 48px;
+
+    display: block;
+
+    box-sizing: border-box;
+    width: 142px;
+    height: 48px;
+    margin: 0 auto;
+
+    text-align: center;
+    letter-spacing: 1px;
+
+    color: #fff;
+    border-radius: 48px;
+    background: #788cf5;
+}
