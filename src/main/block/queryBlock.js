@@ -73,6 +73,7 @@ const queryBlock = _queryBlockIpc => ({
         });
         req.on('error', function (e) {
           console.log('error occur,error is', e);
+          return ;
         });
       });
       req.write(bodyString);

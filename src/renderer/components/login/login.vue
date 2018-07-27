@@ -106,6 +106,7 @@
 
 	        background: url(./img/loginBg.png) no-repeat left top;
 	        background-size: contain;
+        -webkit-app-region: drag;
 	    }
 	    .logo
 	    {
@@ -136,6 +137,7 @@
 
 	            transform: translateX(17px);;
 
+              -webkit-app-region: no-drag;
 	            @include flexCon;
 	        }
 	        input

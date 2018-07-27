@@ -26,7 +26,7 @@
 				<span @click='addCountPopShow = true'></span>
 				<div>
 					添加新的账号 或
-					<i @click="isImportShow = true">导入私钥</i>
+					<i @click="isImportShow = true">导入私钥/Keystore</i>
 				</div>
 			</div>
       <!--<div class="w_linkeye_introduce clearfix">-->
@@ -203,8 +203,10 @@
 	        border-bottom: 1px solid #e1e2e3;
 	    }
 
-	    .w_accrount_list_con li
-	    {
+	    .w_accrount_list_con{
+        max-height: 345px;
+        overflow: auto;
+        li{
 	        &
 	        {
 	            padding: 20px 10px 13px 11px;
@@ -298,7 +300,7 @@
           }
         }
 	    }
-
+      }
 	    .w_add_account
 	    {
 	        &

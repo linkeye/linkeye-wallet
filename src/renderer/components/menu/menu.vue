@@ -1,6 +1,6 @@
 <template>
 	<div id="menu">
-
+    <div class="app_region"></div>
 		<a href="javascript:;" @click='chooseMenu(0)' class="w_menu_account">账户</a>
 		<a href="javascript:;" @click='chooseMenu(1)' class="w_menu_record">记录</a>
 		<a href="javascript:;" @click='chooseMenu(2)' class="w_menu_transfer">转账</a>
@@ -11,8 +11,8 @@
 			<!--<a href="javascript:;" class="chain"></a>-->
 			<!--<a href="javascript:;" class="panel_point"></a>-->
 			<a href="javascript:;" @click='setPopShow = true' class="set"></a>
-			<!--<a href="javascript:;" class="minimize"></a>-->
-			<!--<a href="javascript:;" ></a>-->
+			<a href="javascript:;" class="minimize" @click="minimizeWindow"></a>
+			<a href="javascript:;" @click="closeWindow"></a>
 		</div>
 
 		<router-view></router-view>
@@ -21,6 +21,7 @@
 </template>
 <script>
 	import menuAccount from '@/components/menu/accountSet.vue';
+  const {app} = require('electron');
 	export default {
 		data(){
 			return {
@@ -32,6 +33,12 @@
 			closeSetPopFn(a){
 				this.setPopShow = false;
 			},
+      closeWindow:function () {
+        this.$ipcRenderer.send('app-close','close');
+      },
+      minimizeWindow:function () {
+        this.$ipcRenderer.send('window-min','min');
+      },
       chooseMenu:function (index) {
         switch (index){
           case 0:
@@ -99,14 +106,21 @@
 	        background: url(./img/menu.png) no-repeat left top;
 	        background-size: 100%;
 	    }
-	    a
+    .app_region{
+      width:100%;
+      position: absolute;
+      height:80px;
+      -webkit-app-region: drag;
+      z-index: -1;
+    }
+	    &>a
 	    {
+
+          -webkit-app-region: no-drag;
 	        font-size: 22px;
-
 	        display: inline-block;
-
-	        padding: 60px 0 19px;
-
+          box-sizing: border-box;
+	        margin: 60px 0 19px;
 	        color: #fff;
 	    }
 	    .w_menu_account
@@ -138,13 +152,14 @@
 	    /* 设置部分样式 */
 	    .config_con {
 	    	& {
-	    		position: absolute;
+	    		position: fixed;
 	    		top: 10px;
 	    		right: 10px;
 	    		height: 16px;
 	    	}
 	    	a {
 	    		display: inline-block;
+          -webkit-app-region: no-drag;
 	    		width: 16px;
 	    		height: 16px;
 	    		padding: 0;

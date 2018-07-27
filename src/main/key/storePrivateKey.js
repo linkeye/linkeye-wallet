@@ -26,7 +26,7 @@ const storePrivateKey = _storePrivateKeyIpc => ({
       var minute = date.getMinutes();
       var second = date.getSeconds();
       var dateTime = year+month+day+hour+minute+second;
-      fs.writeFile(path + '/'+ dateTime +'privateKey.ert', storeKey.privateKey, {flag:'w',encoding:'utf-8',mode:'0666'}, function(err){
+      fs.writeFile(path + '/'+ dateTime +'privateKeyOrKeystore.ert', storeKey.privateKey, {flag:'w',encoding:'utf-8',mode:'0666'}, function(err){
         if(err){
           console.log("write private key to file fail")
           requestBack({

@@ -37,6 +37,7 @@
 
 <script>
   import { Toast } from 'mint-ui'
+  let testPwd = /^[a-zA-Z0-9]{6,18}$/;
 	export default{
 		props:['addCountPopShow'],
 		data(){
@@ -65,6 +66,10 @@
         }else if(index == 2){
           if(!this.password){
             Toast('请输入您的密码');
+            return false
+          }
+          if(!testPwd.test(this.password)){
+            Toast('请输入6-18位密码，支持英文，数字');
             return false
           }
           if(!this.repeatPassword){
@@ -202,7 +207,7 @@
       },
 
 			closePop(index){
-
+//        alert(111)
         if(index){
           this.$emit('closeAddAcountPop',true);
         }else{
@@ -244,7 +249,9 @@
 	    {
 	        &
 	        {
+              -webkit-app-region: no-drag;
 	            position: relative;
+              outline: none;
 	            top: 80px;
 	            left: 77px;
 
@@ -258,13 +265,15 @@
 	        .close_btn
 	        {
 	            position: absolute;
+              -webkit-app-region: no-drag;
 	            top: 7px;
 	            right: 7px;
 
 	            width: 16px;
 	            height: 16px;
-
+            z-index:1000;
 	            background: url(../../assets/Sprite.png) no-repeat -196px -98px;
+              cursor: pointer;
 	        }
 	    }
 

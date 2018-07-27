@@ -158,6 +158,7 @@
 				background: url(../../assets/Sprite.png) no-repeat -195px -98px;
 				background-size: 600px;
 				cursor: pointer;
+        -webkit-app-region: no-drag;
 			}
 		}
 		.change_psw_con {

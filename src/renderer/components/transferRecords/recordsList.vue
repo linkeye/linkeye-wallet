@@ -28,32 +28,48 @@
       </div>
       <div class="record_table">
         <div class="table_header">
-          <span>时间</span>
-          <span>交易金额</span>
-          <span>对方账户</span>
-          <span style="width: 10%">状态</span>
-          <span style="width: 10%">手续费</span>
-          <span>交易Hash</span>
+          <ul>
+            <li>时间</li>
+            <li>交易金额</li>
+            <li>对方账户</li>
+            <li class="type_li">
+              <p @click="isCheck = !isCheck">类型 <i></i></p>
+              <div :class="isCheck?'select_type':''">
+                <p :class="isTransferIn?'active':''" @click="selectType(1)">转入</p>
+                <p :class="isTransferIn?'':'active'" @click="selectType(2)">转出</p>
+              </div>
+            </li>
+            <li>状态</li>
+            <li>手续费</li>
+            <li>交易Hash</li>
+            <li>备注</li>
+          </ul>
         </div>
         <ul>
           <li v-for="elem in recordsList">
             <div>
-              <p>{{elem.send_time}}</p>
+              <p>{{elem.sendTime}}</p>
             </div>
             <div>
-              <p>{{elem.send_balance}}</p>
+              <p>{{elem.sendBalance}}</p>
             </div>
             <div>
-              <p>{{elem.account_addr_to}}</p>
-            </div>
-            <div style="width: 10%">
-              <p>{{getStatusName(elem.send_status)}}</p>
-            </div>
-            <div style="width: 10%">
-              <p>{{elem.service_charge}}LET</p>
+              <p>{{elem.toAddress}}</p>
             </div>
             <div>
-              <p>{{elem.trans_hash}}</p>
+              <p>{{elem.sendState==0?"转入":"转出"}}</p>
+            </div>
+            <div>
+              <p>{{getStatusName(elem.status)}}</p>
+            </div>
+            <div>
+              <p>{{elem.sendFee}}LET</p>
+            </div>
+            <div>
+              <p>{{elem.sendHash}}</p>
+            </div>
+            <div>
+              <p>{{elem.sendComment}}</p>
             </div>
           </li>
         </ul>
@@ -72,7 +88,10 @@
             accountList:[],
             accountShowNo:0,
             isShowNameList:false,
-            accountBalance:'0'
+            accountBalance:'0',
+            isCheck:false, //是否点击类型下拉
+            isTransferIn:true, //是否转入,
+            accountItem:'',
           }
       },
     filters: {
@@ -92,6 +111,18 @@
         Toast('复制成功')
       },
 
+      selectType:function (index) {
+        let item = this.accountItem?this.accountItem:this.accountList[0]
+        if(index==1){
+          this.isTransferIn = true;
+          this.queryRecordTransferIn(item);
+        }else{
+          this.isTransferIn = false;
+          this.onRequestRecords(item);
+        }
+        this.isCheck=false;
+      },
+
       getStatusName:function (status) {
         if(status == 0){
           return '成功';
@@ -105,6 +136,7 @@
       checkAccount:function (index,item) {
         this.accountShowNo = index;
         this.isShowNameList = false;
+        this.accountItem = item;
         this.onRequestRecords(item);
         this.onRequestBalance(item);
       },
@@ -149,7 +181,11 @@
                 }
               })
             }else{
-              _this.onRequestRecords(_this.accountList[0]);
+              if(_this.isTransferIn){
+                _this.queryRecordTransferIn(_this.accountList[0]);
+              }else{
+                _this.onRequestRecords(_this.accountList[0]);
+              }
               _this.onRequestBalance(_this.accountList[0]);
             }
             if(_this.accountList == null){
@@ -176,12 +212,26 @@
         this.onRequestBack();
       },
 
+      //转入记录查询
+      queryRecordTransferIn:function (item) {
+        let url = 'http://10.23.2.196:8080/sendrecordinfo/findinfobytoaddress';
+//        alert(item.account_address)
+        let _this = this;
+        let params = {
+          toAddress:item.account_address
+        }
+        this.$api.postHttp(url,params,function (res) {
+//          console.log(res);
+          _this.recordsList = res.result
+        })
+      },
+
+      //转出记录查询
       onRequestRecords:function (item) {
         let accountId = item.account_id;
         this.$ipcRenderer.send('record',accountId);
         this.onResponseRecords();
       },
-
       onResponseRecords:function () {
         let _this = this;
         this.$ipcRenderer.on('record-back', data => {
@@ -259,6 +309,7 @@
               position: absolute;
               top:25px;
               width:120px;
+              z-index: 1000;
               height:0;
               background: #F6F7FE;
               border:1px solid #788CF5;
@@ -320,20 +371,76 @@
         font-weight: 600;
         font-size: 0;
         /*display: flex;*/
-        span{
-          display: inline-block;
-          line-height: 40px;
-          font-size: 14px;
-          text-align: center;
-          padding:0 15px;
-          box-sizing: border-box;
+        &>ul{
+          li{
+            display: inline-block;
+            line-height: 40px;
+            font-size: 12px;
+            text-align: center;
+            padding:0 15px;
+            box-sizing: border-box;
+            position: relative;
+            width: 14%;
+          }
+          li.type_li{
+            &>p{
+              text-align: center;
+              cursor: pointer;
+              i{
+                position: absolute;
+                display: block;
+                height: 0;
+                border-top:8px solid #333333;
+                border-left:5px solid transparent;
+                border-right:5px solid transparent;
+                top:40%;
+                right:20%;
+              }
+             &:hover>i{
+               border-top:8px solid #788CF5;
+             }
+            }
+            &>div{
+              position: absolute;
+              width:60%;
+              height:52px;
+              top:20%;
+              left: 20%;
+              box-shadow: 0 0 5px #333333;
+              border-radius: 3px;
+              opacity: 0;
+              transition: all 0.3s;
+              background: #ffffff;
+              z-index: -1;
+              p{
+                line-height: 26px;
+                height:26px;
+                text-align: center;
+                cursor: pointer;
+              }
+              p.active{
+                color: #788CF5;
+              }
+              p:hover{
+                color: #788CF5;
+              }
+            }
+            &>div.select_type{
+              opacity: 1;
+              top:100%;
+              z-index: 1000;
+            }
+          }
+          li:nth-child(4),li:nth-child(5),li:nth-child(6){
+            width: 10%;
+          }
         }
-        span:nth-child(1),span:nth-child(2),span:nth-child(3),span:nth-child(6){
-          width: 20%;
-        }
+
       }
 
-      ul{
+      &>ul{
+        max-height: 350px;
+        overflow: auto;
         li{
           /*display: flex;*/
           font-size: 0;
@@ -345,8 +452,9 @@
             box-sizing: border-box;
             display: inline-block;
             vertical-align: middle;
-            font-size: 14px;
+            font-size: 12px;
             color: #333333;
+            width: 14%;
             p{
               text-align: center;
               display: inline-block;
@@ -355,8 +463,8 @@
               width: 100%;
             }
           }
-          &>div:nth-child(1),&>div:nth-child(2),&>div:nth-child(3),&>div:nth-child(6){
-            width: 20%;
+          &>div:nth-child(4),&>div:nth-child(5),&>div:nth-child(6){
+            width: 10%;
           }
         }
 

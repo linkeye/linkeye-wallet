@@ -18,6 +18,10 @@ import ipcExportPrivateKey from './ipc/ipcExportKeyMsg'
 import ipcStorePrivateKey  from './ipc/ipcStorePrivateKeyMsg'
 import ipcGeneratePath from './ipc/ipcGeneratePathMsg'
 import ipcQueryBlock from './ipc/ipcQueryBlockMsg'
+import ipcExportKeystore from './ipc/ipcExportKeystoreMsg'
+import ipcImportKeystore from './ipc/ipcImportKeystoreMsg'
+import ipcAppClose from './ipc/ipcAppCloseMsg'
+import ipcWindowMin from './ipc/ipcWindowMinMsg'
 
 if (process.env.NODE_ENV !== 'development') {
   global.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\') // eslint-disable-line
@@ -41,7 +45,9 @@ function createWindow() {
     webPreferences: {
       webSecurity:false,
     },
+    frame: false
   });
+  mainWindow.show();
   mainWindow.setResizable(false)
   mainWindow.setMaximizable(false)
   mainWindow.loadURL(winURL);
@@ -66,6 +72,10 @@ function createWindow() {
   new ipcStorePrivateKey(ipcMain, mainWindow.webContents);
   new ipcGeneratePath(ipcMain, mainWindow.webContents);
   new ipcQueryBlock(ipcMain, mainWindow.webContents);
+  new ipcExportKeystore(ipcMain, mainWindow.webContents);
+  new ipcImportKeystore(ipcMain, mainWindow.webContents);
+  new ipcAppClose(ipcMain, mainWindow.webContents);
+  new ipcWindowMin(ipcMain, mainWindow.webContents);
 }
 
 app.on('ready', createWindow);
@@ -81,6 +91,9 @@ app.on('activate', () => {
   }
 });
 
+export const appWindowMin = function () {
+    mainWindow.minimize();
+}
 /**
  * Auto Updater
  *

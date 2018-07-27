@@ -1,18 +1,18 @@
-import createAccount from '../account/createAccount'
+import exportKeystore from '../key/exportKeystore'
 
 const {CLIENT_NORMAL_MSG, CRAWLER_NORMAL_MSG,} = require('../../constants/constants')
 
-export default class createAccountIpc {
+export default class importKeystoreIpc {
   constructor(listener, sender) {
     this.listener = listener
     this.sender = sender
     this.addListener(CLIENT_NORMAL_MSG, this.handleFn.bind(this))
-    this.handlerCreateAccount = createAccount(this)
+    this.handlerExportKeystore = exportKeystore(this)
   }
 
   handleFn(event, data) {
     try {
-        this.handlerCreateAccount[data.type](event, data.data)
+      this.handlerExportKeystore[data.type](event, data.data)
     } catch (error) {
       console.error('handler event error:' + error.message)
     }

@@ -1,18 +1,18 @@
-import createAccount from '../account/createAccount'
+import windowMin from '../common/windowMin'
 
 const {CLIENT_NORMAL_MSG, CRAWLER_NORMAL_MSG,} = require('../../constants/constants')
 
-export default class createAccountIpc {
+export default class windowMinIpc {
   constructor(listener, sender) {
     this.listener = listener
     this.sender = sender
     this.addListener(CLIENT_NORMAL_MSG, this.handleFn.bind(this))
-    this.handlerCreateAccount = createAccount(this)
+    this.handlerWindowMin = windowMin(this)
   }
 
   handleFn(event, data) {
     try {
-        this.handlerCreateAccount[data.type](event, data.data)
+      this.handlerWindowMin[data.type](event, data.data)
     } catch (error) {
       console.error('handler event error:' + error.message)
     }
