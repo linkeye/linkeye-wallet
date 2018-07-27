@@ -123,6 +123,8 @@ initDataBase.createSendTable = function(tableName, db) {
       "send_balance      TEXT ," +
       "service_charge    TEXT ," +
       "comment           TEXT ," +
+      "del_info          TEXT ," +
+      "send_state        TEXT ," +
       "send_status       TEXT ," +
       "block_number      TEXT ," +
       "trans_hash        TEXT " +

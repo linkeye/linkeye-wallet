@@ -73,13 +73,11 @@ const sendTransaction = _sendTransactionIpc => ({
                   method:'POST',
                   headers:headers
                 };
-
                 var req = https.request(options, function (res) {
                   res.setEncoding('utf-8');
                   var responseString = '';
                   res.on('data', function (data) {
                     responseString += data;
-                    // nonce from wallet node
                     console.log("get nonce from wallet node json is " + data);
                     var nonceStr = JSON.parse(data);
                     console.log("nonce from wallet is " + nonceStr.result);
@@ -92,8 +90,6 @@ const sendTransaction = _sendTransactionIpc => ({
                       })
                     }
                     console.log("The sign of the transaction is " + signTx);
-
-
                     var body = {
                       "jsonrpc": "2.0",
                       "method": "let_blockNumber",
@@ -226,5 +222,4 @@ const sendTransaction = _sendTransactionIpc => ({
     }
   }
 });
-
 export default sendTransaction

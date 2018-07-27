@@ -1,5 +1,8 @@
+const {MICSERVER_IP, MICSERVER_PORT} = require('../../constants/constants')
+
 var UUID = require('uuid');
 const dbInit = require('../sqlite/init');
+const https = require('http');
 
 function sendRcordData(fromAddress, accountId, toAddress, sendToBalance, sendFee, sendContent, status, blockNumber, transHash) {
   if(!fromAddress || !accountId || !toAddress || !sendToBalance || !sendFee || !status == null) {
@@ -32,6 +35,48 @@ function sendRcordData(fromAddress, accountId, toAddress, sendToBalance, sendFee
           insert.run(uuidId, accountId, dateTime, fromAddress, toAddress, sendToBalance, sendFee, sendContent, status, blockNumber, transHash);
           insert.finalize();
           db.close();
+          var body = {
+            "sendTime":dateTime,
+            "sendBalance":sendToBalance,
+            "fromAddress":fromAddress,
+            "toAddress":toAddress,
+            "sendFee":sendFee,
+            "status":status,
+            "delInfo":0,
+            "sendState":0,
+            "sendHash":transHash,
+            "sendComment":sendContent
+          };
+          var bodyString = JSON.stringify(body);
+          var headers = {
+            'Content-Type':'application/json',
+            'Content-Length':bodyString.length
+          };
+
+          var options = {
+            host: MICSERVER_IP,
+            port: MICSERVER_PORT,
+            path: '/sendrecordinfo/addsendrecordinfo',
+            method: 'POST',
+            headers: headers
+          };
+          var req = https.request(options, function (res) {
+            res.setEncoding('utf-8');
+            var responseString = '';
+            res.on('data', function (data) {
+              responseString += data;
+              console.log("get data from micServer success and back data is " + data);
+            });
+
+            res.on('end', function (res) {
+              console.log("response end");
+            });
+            req.on('error', function (e) {
+              console.log('error occur,error is', e);
+            });
+          });
+          req.write(bodyString);
+          req.end();
         }
       }
     }
