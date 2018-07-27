@@ -214,7 +214,7 @@
 
       //转入记录查询
       queryRecordTransferIn:function (item) {
-        let url = 'http://10.23.2.196:8080/sendrecordinfo/findinfobytoaddress';
+        let url = 'http://116.213.143.67:58087/sendrecordinfo/findinfobytoaddress';
 //        alert(item.account_address)
         let _this = this;
         let params = {
